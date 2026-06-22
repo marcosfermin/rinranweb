@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rinran Music Inc. — Impulsa Tu Música</title>
+  <meta name="description" content="Ayudamos a artistas, productores y sellos discográficos a crecer su presencia en YouTube. Google Ads, Charts, Suscriptores, Comentarios y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080b10;
+      --surface:  #0e1318;
+      --border:   #1e2a38;
+      --text:     #e8edf2;
+      --muted:    #8a9bb0;
+      --green:    #22c55e;
+      --red:      #ef4444;
+      --yellow:   #eab308;
+      --blue:     #3b82f6;
+      --purple:   #a855f7;
+      --brown:    #d97706;
+      --accent:   #00e5ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 5%;
+      background: rgba(8, 11, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav img { height: 44px; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 28px; }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(168,85,247,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(34,197,94,0.06) 0%, transparent 60%);
+    }
+
+    /* animated grid lines */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-logo {
+      width: min(220px, 50vw);
+      margin-bottom: 32px;
+      position: relative;
+      filter: drop-shadow(0 0 30px rgba(0,229,255,0.3));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), #a855f7 60%, var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 600px;
+      position: relative;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 36px;
+      position: relative;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .badge.green  { border-color: var(--green);  color: var(--green);  background: rgba(34,197,94,0.08); }
+    .badge.red    { border-color: var(--red);    color: var(--red);    background: rgba(239,68,68,0.08); }
+    .badge.yellow { border-color: var(--yellow); color: var(--yellow); background: rgba(234,179,8,0.08); }
+    .badge.blue   { border-color: var(--blue);   color: var(--blue);   background: rgba(59,130,246,0.08); }
+    .badge.purple { border-color: var(--purple); color: var(--purple); background: rgba(168,85,247,0.08); }
+    .badge.brown  { border-color: var(--brown);  color: var(--brown);  background: rgba(217,119,6,0.08); }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #0090ff);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0,229,255,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 45px rgba(0,229,255,0.4); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 80px 5%; }
+
+    .section-label {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 56px;
+      font-size: 1rem;
+    }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-color, var(--accent));
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border-color: var(--card-color, var(--accent));
+    }
+
+    .card-green  { --card-color: var(--green); }
+    .card-red    { --card-color: var(--red); }
+    .card-yellow { --card-color: var(--yellow); }
+    .card-blue   { --card-color: var(--blue); }
+    .card-purple { --card-color: var(--purple); }
+    .card-brown  { --card-color: var(--brown); }
+
+    .card-image-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      max-height: 420px;
+    }
+
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover .card-image-wrap img { transform: scale(1.03); }
+
+    .card-body {
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--card-color, var(--accent));
+      display: inline-block;
+      margin-right: 6px;
+      box-shadow: 0 0 8px var(--card-color, var(--accent));
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--card-color, var(--accent));
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-body h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .card-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: var(--card-color, var(--accent));
+      color: #000;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .card-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* WhatsApp icon inline svg */
+    .icon-wa { width: 18px; height: 18px; fill: #000; flex-shrink: 0; }
+
+    /* ── WHY US ── */
+    .why-section { background: var(--surface); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      background: var(--bg);
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .why-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .why-card p { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── CONTACT / CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 100px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,229,255,0.07) 0%, transparent 70%);
+    }
+
+    .cta-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      position: relative;
+    }
+
+    .phone-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      position: relative;
+      margin-top: 8px;
+    }
+    .phone-link:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 16px;
+    }
+
+    footer img { height: 36px; }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
+      margin: 0 auto 24px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: center; }
+      footer p { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <img src="img/logo-white.png" alt="Rinran Music Inc." />
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">¿Por qué nosotros?</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="nav-cta" href="https://wa.me/16465432266" target="_blank" rel="noopener">
+      Hablar con un asesor
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <img class="hero-logo" src="img/logo-white.png" alt="Rinran Music Inc." />
+    <h1>Impulsa Tu Música<br /><span>al Siguiente Nivel</span></h1>
+    <p>Ayudamos a artistas, productores y sellos discográficos a crecer su presencia en YouTube y alcanzar nuevas metas en la industria musical.</p>
+
+    <div class="hero-badges">
+      <span class="badge green">🟢 Google Ads</span>
+      <span class="badge red">🔴 Tráfico Web</span>
+      <span class="badge yellow">🟡 YouTube Charts</span>
+      <span class="badge blue">🔵 Suscriptores</span>
+      <span class="badge purple">🟣 Comentarios &amp; Likes</span>
+      <span class="badge brown">🟤 Disco de Oro</span>
+    </div>
+
+    <div class="hero-cta-group">
+      <a class="btn-primary" href="#servicios">
+        Ver servicios
+      </a>
+      <a class="btn-ghost" href="https://wa.me/16465432266" target="_blank" rel="noopener">
+        <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="fill:currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <p class="section-label">Nuestros Servicios</p>
+    <h2 class="section-title">Todo lo que tu música necesita</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Soluciones completas de marketing musical digital para artistas independientes y sellos discográficos.</p>
+
+    <div class="services-grid">
+
+      <!-- 1. Google Ads -->
+      <div class="service-card card-green">
+        <div class="card-image-wrap">
+          <img src="img/1.png" alt="Campañas Google Ads para Videos Limpios" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>Google Ads</div>
+          <h3>Promoción con Google Ads</h3>
+          <p>Para videos limpios y aptos para publicidad. Desde 20,000 hasta 933,000 visualizaciones estimadas en YouTube.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20promoci%C3%B3n%20con%20Google%20Ads%20para%20mi%20video,%20que%20est%C3%A1%20limpio%20y%20apto%20para%20publicidad." target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Tráfico Web -->
+      <div class="service-card card-red">
+        <div class="card-image-wrap">
+          <img src="img/2.png" alt="Campañas de Tráfico Web para Videos Explícitos" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>Tráfico Web</div>
+          <h3>Promoción con Tráfico Web</h3>
+          <p>Para videos con contenido explícito. Vistas que cuentan para tendencias y monetización. Desde 7,500 visualizaciones.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20promoci%C3%B3n%20con%20tr%C3%A1fico%20web%20para%20mi%20video,%20que%20contiene%20contenido%20expl%C3%ADcito." target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. YouTube Charts -->
+      <div class="service-card card-yellow">
+        <div class="card-image-wrap">
+          <img src="img/3.png" alt="Posicionamiento en YouTube Charts" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>YouTube Charts</div>
+          <h3>Posicionamiento en YouTube Charts</h3>
+          <p>Estrategias para aumentar la visibilidad en charts de YouTube. Posiciones #1, #10, #90 disponibles en múltiples países.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20posicionar%20mi%20video%20musical%20en%20los%20charts%20de%20YouTube.%20%C2%BFQu%C3%A9%20necesito?" target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Suscriptores -->
+      <div class="service-card card-blue">
+        <div class="card-image-wrap">
+          <img src="img/4.png" alt="Suscriptores para YouTube" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>Suscriptores</div>
+          <h3>Suscriptores para YouTube</h3>
+          <p>Impulsa el crecimiento de tu canal con suscriptores reales de Latinoamérica. $300 USD por cada 1,000 suscriptores.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20suscriptores%20para%20mi%20canal%20de%20YouTube." target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Comentarios y Likes -->
+      <div class="service-card card-purple">
+        <div class="card-image-wrap">
+          <img src="img/5.png" alt="Comentarios y Likes para YouTube" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>Comentarios &amp; Likes</div>
+          <h3>Comentarios y Likes</h3>
+          <p>Aumenta la interacción en tus videos. Audiencia de RD, Puerto Rico, Colombia y Venezuela. Desde 100 hasta 1,000 comentarios.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20comentarios%20y%20likes%20para%20mi%20video%20de%20YouTube." target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Disco de Oro -->
+      <div class="service-card card-brown">
+        <div class="card-image-wrap">
+          <img src="img/6.png" alt="Asesoría para Disco de Oro RIAA Latin" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <div class="card-tag"><span class="card-dot"></span>Disco de Oro</div>
+          <h3>Asesoría para Disco de Oro</h3>
+          <p>Orientación y planificación para alcanzar la certificación RIAA Latin Gold. Proceso de 3 a 9 meses. Precio: $35,000 USD.</p>
+          <a class="card-btn" href="https://wa.me/16465432266?text=Hola,%20quiero%20obtener%20un%20Disco%20de%20Oro%20para%20mi%20canci%C3%B3n.%20%C2%BFQu%C3%A9%20necesito?" target="_blank" rel="noopener">
+            <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Solicitar ahora
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="por-que" class="why-section">
+    <p class="section-label">¿Por qué elegirnos?</p>
+    <h2 class="section-title">Tu éxito es nuestra misión</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Llevamos tu música más lejos con estrategias probadas y atención personalizada.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🎯</span>
+        <h4>Atención Personalizada</h4>
+        <p>Cada artista es único. Diseñamos estrategias adaptadas a tus metas específicas.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🏷️</span>
+        <h4>Para Independientes y Sellos</h4>
+        <p>Trabajamos con artistas emergentes y con grandes sellos discográficos por igual.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📊</span>
+        <h4>Marketing Digital Musical</h4>
+        <p>Experiencia comprobada en crecimiento de canales y alcance en plataformas digitales.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚀</span>
+        <h4>Crecimiento y Alcance</h4>
+        <p>Estrategias enfocadas en resultados reales: vistas, suscriptores y posicionamiento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contacto" class="cta-section">
+    <h2>¿Listo para llevar<br />tu música más lejos?</h2>
+    <p>Contáctanos hoy y te ayudamos a elegir la estrategia perfecta para tu proyecto musical.</p>
+    <a class="btn-primary" href="https://wa.me/16465432266" target="_blank" rel="noopener" style="display:inline-flex; margin: 0 auto 28px;">
+      <svg class="icon-wa" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.83L.057 23.885a.75.75 0 0 0 .918.918l6.113-1.457A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.872 0-3.63-.48-5.163-1.324l-.37-.216-3.83.913.928-3.753-.235-.383A9.963 9.963 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Escríbenos por WhatsApp
+    </a>
+    <br />
+    <a class="phone-link" href="tel:+16465432266">
+      📲 +1 (646) 543-2266
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="img/logo-white.png" alt="Rinran Music Inc." />
+    <p>© 2026 Rinran Music Inc.<br />Llevando tu música más lejos. 🚀</p>
+  </footer>
+
+</body>
+</html>
