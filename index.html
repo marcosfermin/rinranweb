@@ -494,10 +494,97 @@
       margin: 0 auto 24px;
     }
 
+    /* ── DISTRIBUTION ── */
+    .distro-section {
+      background: linear-gradient(135deg, rgba(168,85,247,0.06) 0%, rgba(0,229,255,0.04) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .distro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .distro-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+    }
+
+    .distro-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .distro-img-wrap:hover img { transform: scale(1.02); }
+
+    .distro-content .section-label,
+    .distro-content .section-title,
+    .distro-content .section-sub { text-align: left; margin-left: 0; }
+
+    .distro-content .divider { margin-left: 0; }
+
+    .distro-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .distro-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .distro-feature::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 8px var(--purple);
+      flex-shrink: 0;
+    }
+
+    .btn-distro {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 36px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(168,85,247,0.3);
+    }
+    .btn-distro:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(168,85,247,0.5); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
       .services-grid { grid-template-columns: 1fr; }
+      .distro-inner { grid-template-columns: 1fr; gap: 36px; }
+      .distro-content .section-label,
+      .distro-content .section-title,
+      .distro-content .section-sub { text-align: center; }
+      .distro-content .divider { margin: 0 auto 24px; }
+      .distro-feature { justify-content: center; }
       footer { flex-direction: column; align-items: center; }
       footer p { text-align: center; }
     }
@@ -510,6 +597,7 @@
     <img src="img/logo-white.png" alt="Rinran Music Inc." />
     <div class="nav-links">
       <a href="#servicios">Servicios</a>
+      <a href="#distribucion">Distribución</a>
       <a href="#por-que">¿Por qué nosotros?</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -653,6 +741,31 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- DISTRIBUTION -->
+  <section id="distribucion" class="distro-section">
+    <div class="distro-inner">
+      <div class="distro-img-wrap">
+        <img src="img/distribution.png" alt="Distribución Musical Digital" loading="lazy" />
+      </div>
+      <div class="distro-content">
+        <p class="section-label">Distribución Musical</p>
+        <h2 class="section-title">Lleva Tu Música a<br /><span style="background:linear-gradient(135deg,#a855f7,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Todo el Mundo</span></h2>
+        <div class="divider" style="background:linear-gradient(90deg,#a855f7,transparent);"></div>
+        <p class="section-sub" style="text-align:left;margin-left:0;">Distribuye tu música en más de 150 plataformas digitales — Spotify, Apple Music, Amazon Music, TikTok y más — y cobra el 100% de tus regalías.</p>
+        <div class="distro-features">
+          <div class="distro-feature">Distribución a más de 150 plataformas globales</div>
+          <div class="distro-feature">100% de tus regalías, sin intermediarios</div>
+          <div class="distro-feature">Registro de derechos de autor incluido</div>
+          <div class="distro-feature">Estadísticas y reportes en tiempo real</div>
+          <div class="distro-feature">Soporte dedicado para artistas independientes</div>
+        </div>
+        <a class="btn-distro" href="https://distro.secretstar.us/sign_up?ref=LSVZF" target="_blank" rel="noopener">
+          ✦ Comenzar a Distribuir
+        </a>
+      </div>
     </div>
   </section>
 
